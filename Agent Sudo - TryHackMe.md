@@ -36,7 +36,7 @@ $ nmap -sC -sV -oN initialScan <MachineIP>
 
 Now here you can see that Port 80 which is open. So, let's check that and see what it returns.
 
-![Webpage](C:\Users\Arun\Downloads\agentSudoImages\ctf2.PNG)
+![Webpage](agentSudoImages/ctf2.PNG)
 
 Hmm looks like there is a code name and that should be used as a custom user-agent to access the site. Interesting!
 
