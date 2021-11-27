@@ -26,7 +26,7 @@ Scan the machine's IP using nmap to discover the open ports.
 $ nmap -sC -sV -oN initialScan <MachineIP>
 ```
 
-![Nmap Scan](agentSudoImages/ctf1.PNG)
+![Nmap Scan](Assets/agentSudoImages/ctf1.PNG)
 
 **1. How many open ports?**
 
@@ -36,19 +36,19 @@ $ nmap -sC -sV -oN initialScan <MachineIP>
 
 Now here you can see that Port 80 which is open. So, let's check that and see what it returns.
 
-![Webpage](agentSudoImages/ctf2.PNG)
+![Webpage](Assets/agentSudoImages/ctf2.PNG)
 
 Hmm looks like there is a code name and that should be used as a custom user-agent to access the site. Interesting!
 
-![Hmm](agentSudoImages/ctf3.PNG)
+![Hmm](Assets/agentSudoImages/ctf3.PNG)
 
 Its says "Are you one of the 25 employees?".Maybe it refers to the alphabets? Lets try it out.
 
-![got](agentSudoImages/ctf4.PNG)
+![got](Assets/agentSudoImages/ctf4.PNG)
 
 While trying out each alphabets, we got a hit with letter C and the response has a location named `agent_C_attention.php`. So if we visit that location we get
 
-![chris](agentSudoImages/ctf5.PNG)
+![chris](Assets/agentSudoImages/ctf5.PNG)
 
 **2. How you redirect yourself to a secret page?**
 
@@ -76,7 +76,7 @@ $ ftp <machineIP>
 
 
 
-![findingFTPpwd](agentSudoImages/ctf6.PNG)
+![findingFTPpwd](Assets/agentSudoImages/ctf6.PNG)
 
 So we a password to login. Let's brute force it using hydra.
 
@@ -86,7 +86,7 @@ $ hydra -l chris -P /path/to/wordlist <machineIP> <service>
 
 
 
-![password](agentSudoImages/ctf7.PNG)
+![password](Assets/agentSudoImages/ctf7.PNG)
 
 **1. FTP Password?**
 
@@ -96,7 +96,7 @@ crystal
 
 So we found the password `crystal`. Now lets use this to login FTP Server.
 
-![files](agentSudoImages/ctf8.PNG)
+![files](Assets/agentSudoImages/ctf8.PNG)
 
 So there where 3 files in the server. so I downloaded them all to my local machine using Mget command.
 
@@ -104,7 +104,7 @@ so lets take a look at all the three files that we recovered.
 
 **To_agentJ.txt**
 
-![](agentSudoImages/ctf9.PNG)
+![](Assets/agentSudoImages/ctf9.PNG)
 
 Looks like we have to use steghide or something to uncover the hidden message in those images. So out of suspicion I ran a binwalk command on one of those images `cutie.png`
 
@@ -122,7 +122,7 @@ alien
 
 so after extracting the zip file, we got a text file which contains some hashed value. so I used `hashid <hashedValue>` to check what kind of hash it is and used online tool to decrypt it.
 
-![passrodSteg](agentSudoImages/ctf14.PNG)
+![passrodSteg](Assets/agentSudoImages/ctf14.PNG)
 
 **3.Steg Password**
 
@@ -132,7 +132,7 @@ Area51
 
 Now we can use this password to uncover the details from `cute-alien.jpg`.
 
-![james](agentSudoImages/ctf15.PNG)
+![james](Assets/agentSudoImages/ctf15.PNG)
 
 **4.Who is the other agent (in full name)**
 
@@ -158,7 +158,7 @@ Login into SSH using james credentials.
 $ ssh james@<machineIP>
 ```
 
-![jamesSSH](agentSudoImages/ctf16.PNG)
+![jamesSSH](Assets/agentSudoImages/ctf16.PNG)
 
 Just `cat` the user_flag.txt to reveal the flag.
 
@@ -192,7 +192,7 @@ Enough with the extraordinary stuff? Time to get real.
 
 So at first my goto to command to check for any vulnerabilities is to use `Sudo -l` to check for any process that runs with Root permissions.
 
-![Woah](agentSudoImages/ctf17.PNG)
+![Woah](Assets/agentSudoImages/ctf17.PNG)
 
 Woahh! That was unexpected , we have a `/bin/bash` running with All Root permissions. So if we check the CVE Number for this in exploit DB we get
 
@@ -204,7 +204,7 @@ CVE-2019-14287
 
 So after checking the CVE , we have a ready exploit `Sudo -u#-1 /bin/bash`
 
-![Rooted](agentSudoImages/ctf18.PNG)
+![Rooted](Assets/agentSudoImages/ctf18.PNG)
 
 Hooray! We got the Root access. That exploit went really good.
 
