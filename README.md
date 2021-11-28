@@ -6,5 +6,8 @@ Hello Everyone! Here I will post writeups for TryHackMe rooms with detailed walk
 ![Enumerate](https://img.shields.io/badge/Enumerate-Green) ![Exploit](https://img.shields.io/badge/Exploit-red) ![bruteForce](https://img.shields.io/badge/BruteForce-blue) ![Hash Craking](https://img.shields.io/badge/HashCracking-yellow)
 
 
+#### [2. Basic Pentesting - Easy](https://github.com/EthicalHitler/TryHackMe-Writeups/blob/main/Basic%20Pentesting%20-%20TryHackMe.md)
+![Security](https://img.shields.io/badge/Security-Green) ![Web App](https://img.shields.io/badge/WebApp-red) ![bruteForce](https://img.shields.io/badge/Boot2Root-blue) ![Hash Craking](https://img.shields.io/badge/Cracking-yellow)
+
 
 
