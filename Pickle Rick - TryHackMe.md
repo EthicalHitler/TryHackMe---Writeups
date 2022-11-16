@@ -26,11 +26,11 @@ To enumerate the machine, use Nmap to scan for open ports in the machine. If you
 $ nmap -sC -sV -oN initialScan <machineIP>
 ```
 
-![nmapScan](F:\CTFS_Writeups\WriteUps\Pickle_rick_COMPLETED\Assets\picklerick_Images\image1.jpg)
+![nmapScan](Assets/picklerick_Images/image1.jpg)
 
 **Rustscan**
 
-![rustscan](F:\CTFS_Writeups\WriteUps\Pickle_rick_COMPLETED\Assets\picklerick_Images\image2.jpg)
+![rustscan](Assets/picklerick_Images/image2.jpg)
 
 ***
 
@@ -44,17 +44,17 @@ For this directory bruteforcing , I generally use [gobuster](https://github.com/
 $ gobuster dir -u <url> -w <wordlist>
 ```
 
-![gobuster](F:\CTFS_Writeups\WriteUps\Pickle_rick_COMPLETED\Assets\picklerick_Images\image3.jpg)
+![gobuster](Assets/picklerick_Images/image3.jpg)
 
 Woah! so there is a hidden directory named `Assests` . Lets check what's inside.
 
-![hidden](F:\CTFS_Writeups\WriteUps\Pickle_rick_COMPLETED\Assets\picklerick_Images\image4.jpg)
+![hidden](Assets/picklerick_Images/image4.jpg)
 
 Great, Now we have 7 files present in that directory. Now we will download that and view in our local machine and examine but nothing much.
 
 Lets inspect our homepage and see anything is hiding there.
 
-![jtext](F:\CTFS_Writeups\WriteUps\Pickle_rick_COMPLETED\Assets\picklerick_Images\image5.jpg)
+![jtext](Assets/picklerick_Images/image5.jpg)
 
 Now we have a possible Username `R1ckRul3s`
 
@@ -62,7 +62,7 @@ Lets check a low hanging stuffs like `/robots.txt` and found a random string `Wu
 
 Then, From the Directory Listing, We found a page called `Login.php`. Lets try these 2 as our creds in that.
 
-![enum4linux](F:\CTFS_Writeups\WriteUps\Pickle_rick_COMPLETED\Assets\picklerick_Images\image6.jpg)
+![enum4linux](Assets/picklerick_Images/image6.jpg)
 
  Success ! We are now into the site.
 
@@ -72,11 +72,11 @@ Then, From the Directory Listing, We found a page called `Login.php`. Lets try t
 
 Here we have a text box , we can inject some linux commands here.
 
-![](F:\CTFS_Writeups\WriteUps\Pickle_rick_COMPLETED\Assets\picklerick_Images\image11.jpg)
+![](Assets/picklerick_Images/image11.jpg)
 
 It returns our commands and has a text file. But still it filters certain commands like `Cat,more etc`. we can try `less`.
 
-![](F:\CTFS_Writeups\WriteUps\Pickle_rick_COMPLETED\Assets\picklerick_Images\image12.jpg)
+![](Assets/picklerick_Images/image12.jpg)
 
 ----
 
@@ -92,7 +92,7 @@ mr. meeseek hair
 
 Since we have a command execution. We can try to get a revshell to our machine.
 
-![](F:\CTFS_Writeups\WriteUps\Pickle_rick_COMPLETED\Assets\picklerick_Images\image7.jpg)
+![](Assets/picklerick_Images/image7.jpg)
 
 We got out shell. But we can't read the contents in the file since its owned by Root.
 
@@ -102,13 +102,13 @@ So we can try simple command to leverage the root permissions.
 sudo -l
 ```
 
-![](F:\CTFS_Writeups\WriteUps\Pickle_rick_COMPLETED\Assets\picklerick_Images\image8.jpg)
+![](Assets/picklerick_Images/image8.jpg)
 
 Here No password is required to change as root. so lets try `Sudo Bash`.
 
 Hurray!. Since we got our root access. Its time to grab our second flag.
 
-![](F:\CTFS_Writeups\WriteUps\Pickle_rick_COMPLETED\Assets\picklerick_Images\image9.jpg)
+![](Assets/picklerick_Images/image9.jpg)
 
 
 
@@ -126,7 +126,7 @@ Hurray!. Since we got our root access. Its time to grab our second flag.
 
 Navigate to root and grab the Final Flag.
 
-![](F:\CTFS_Writeups\WriteUps\Pickle_rick_COMPLETED\Assets\picklerick_Images\image10.jpg)
+![](Assets/picklerick_Images/image10.jpg)
 
 ---
 
